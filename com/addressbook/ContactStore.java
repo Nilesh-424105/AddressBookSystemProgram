@@ -79,8 +79,7 @@ public class ContactStore {
 		System.out.println("Enter name of contact you want to sell");
 		String name = sc.nextLine();
 		for (int i = 0; i < contactList.size(); i++) {
-			if (contactList.remove(contactList.get(i)))
-				;
+			if (contactList.remove(contactList.get(i)));
 		}
 	}
 }
