@@ -25,8 +25,9 @@ public class AddressBookMain {
 		Scanner sc = new Scanner(System.in);
 		boolean check = true;
 		while (check) {
-			System.out.println("Enter choise 1.Add the new contact\n 2.Edit Existing Contact\n 3.exit");
+			System.out.println("Enter choise 1.Add the new contact\n 2.Edit Existing Contact\n 3.Remove the Contact\n 4.exit");
 			int choise = sc.nextInt();
+			sc.nextLine();
 			switch(choise) {
 			case 1:
 				AddressBook newContact = new AddressBook();
@@ -41,6 +42,11 @@ public class AddressBookMain {
 				userInterface.print(contactStore.getContactList());
 				
 			case 3:
+				contactStore.remove();
+				System.out.println("Contact List after Deletion");
+				userInterface.print(contactStore.getContactList());
+				
+			case 4:
 				check = false;
 			}
 			
