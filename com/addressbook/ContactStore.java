@@ -10,7 +10,6 @@ public class ContactStore {
 
 	public ArrayList<AddressBook> getContactList() {
 		return contactList;
-
 	}
 
 	public void add(AddressBook contact) {
@@ -24,8 +23,7 @@ public class ContactStore {
 			if (addressBook.getFirstName().equalsIgnoreCase(name)) {
 				boolean check = true;
 				while (check) {
-					System.out.println(
-							"Edit Options 1.FirstName 2.LastName 3.Address 4.City 5.State 6.PhoneNumber 7.Email");
+					System.out.println("Edit Options 1.FirstName 2.LastName 3.Address 4.City 5.State 6.PhoneNumber 7.Email");
 					int choise = sc.nextInt();
 					sc.nextLine();
 					switch (choise) {
