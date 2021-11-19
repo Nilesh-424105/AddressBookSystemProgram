@@ -37,9 +37,9 @@ public class ContactStore extends AddressBook {
 				boolean check = true;
 				while (check) {
 					System.out.println("Enter 1.FirstName 2.LastName 3.Address 4.City 5.State 6.PhoneNumber 7.Email");
-					int choise = sc.nextInt();
+					int choice = sc.nextInt();
 					sc.nextLine();
-					switch (choise) {
+					switch (choice) {
 					case 1:
 						System.out.println("Enter your FirstName:");
 						String firstName = sc.nextLine();
@@ -114,17 +114,26 @@ public class ContactStore extends AddressBook {
 		String state = sc.nextLine();
 		System.out.println("Enter City Name");
 		String city = sc.nextLine();
+		long count1 = 0;
+		long count2 = 0;
 		System.out.println("Persons with State name: " + state);
 		for (int i = 1; i <= dictionary.size(); i++) {
 			List<ContactStore> personWithState = dictionary.get(i).stream()
 					.filter(s -> s.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
 			System.out.println(personWithState);
+			long count= dictionary.get(i).stream().filter(s -> s.getState().equalsIgnoreCase(state)).count();
+			count1 = count1 + count;
 		}
+		System.out.println(count1);
+		System.out.println("Num of Persons in State: " + state + " are: " + count1);
 		System.out.println("Persons with City name: " + city);
 		for (int i = 1; i <= dictionary.size(); i++) {
 			List<ContactStore> personWithCity = dictionary.get(i).stream()
 					.filter(c -> c.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
 			System.out.println(personWithCity);
+			long count= dictionary.get(i).stream().filter(c -> c.getCity().equalsIgnoreCase(city)).count();
+			count2 = count2 + count;
 		}
+		System.out.println("Num of Persons in City: " + city + " are: " + count2);
 	}
 }

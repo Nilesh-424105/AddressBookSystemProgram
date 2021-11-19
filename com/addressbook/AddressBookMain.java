@@ -17,9 +17,9 @@ public class AddressBookMain {
 			while (check) {
 				ContactStore contactStore = new ContactStore();
 				System.out.println("Enter choise 1.Add the new contact\n 2.Edit Existing Contact\n 3.Remove the Contact\n 4.exit");
-				int choise = sc.nextInt();
+				int choice = sc.nextInt();
 				sc.nextLine();
-				switch (choise) {
+				switch (choice) {
 				case 1:
 					contactStore.setContactDetails();
 					boolean checkDuplicate = contactStore.searchForDuplication(arrayList, contactStore);
