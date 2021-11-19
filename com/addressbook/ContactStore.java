@@ -3,24 +3,33 @@ package com.addressbook;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ContactStore {
-
-	private ArrayList<AddressBook> contactList = new ArrayList<AddressBook>();
+public class ContactStore extends AddressBook{
 	Scanner sc = new Scanner(System.in);
 
-	public ArrayList<AddressBook> getContactList() {
-		return contactList;
-	}
+	 public void setContactDetails() {
+	        System.out.println("enter the First Name");
+	        setFirstName(sc.nextLine());
+	        System.out.println("enter the Last Name");
+	        setLastName(sc.nextLine());
+	        System.out.println("enter the Address Name");
+	        setAddress(sc.nextLine());
+	        System.out.println("Enter city");
+	        setCity(sc.nextLine());
+	        System.out.println("enter the State Name");
+	        setState(sc.nextLine());
+	        System.out.println("enter the Phone Number");
+	        setPhoneNumber(sc.nextLine());
+	        System.out.println("enter the ZipCode");
+	        setZip(sc.nextLine());
+	        System.out.println("enter the Email");
+	        setEmail(sc.nextLine());
+	    }
 
-	public void add(AddressBook contact) {
-		contactList.add(contact);
-	}
-
-	public void edit() {
-		System.out.println("Enter name of contact you want to sell");
+	public void editContact(ArrayList<ContactStore> contact) {
+		System.out.println("Enter name of contact to Edit");
 		String name = sc.nextLine();
-		for (AddressBook addressBook : contactList) {
-			if (addressBook.getFirstName().equalsIgnoreCase(name)) {
+		for (int i=0; i<contact.size(); i++) {
+			if (contact.get(i).equals(name)) {
 				boolean check = true;
 				while (check) {
 					System.out.println("Edit Options 1.FirstName 2.LastName 3.Address 4.City 5.State 6.PhoneNumber 7.Email");
@@ -28,58 +37,69 @@ public class ContactStore {
 					sc.nextLine();
 					switch (choise) {
 					case 1:
-						System.out.println("Enter your new FirstName:");
+						System.out.println("Enter your FirstName:");
 						String firstName = sc.nextLine();
-						addressBook.setFirstName(firstName);
-
+						contact.get(i).setFirstName(firstName);
+						break;
 					case 2:
-						System.out.println("Enter your new Last Name:");
+						System.out.println("Enter your Last Name:");
 						String lastName = sc.nextLine();
-						addressBook.setLastName(lastName);
-
+						contact.get(i).setLastName(lastName);
+						break;
 					case 3:
-						System.out.println("Enter your new Address:");
+						System.out.println("Enter your Address:");
 						String address = sc.nextLine();
-						addressBook.setAddress(address);
-
+						contact.get(i).setAddress(address);
+						break;
 					case 4:
-						System.out.println("Enter your new City:");
+						System.out.println("Enter your City:");
 						String city = sc.nextLine();
-						addressBook.setCity(city);
-
+						contact.get(i).setCity(city);
+						break;
 					case 5:
-						System.out.println("Enter your new State:");
+						System.out.println("Enter your State:");
 						String state = sc.nextLine();
-						addressBook.setState(state);
-
+						contact.get(i).setState(state);
+						break;
 					case 6:
-						System.out.println("Enter your new Zip:");
+						System.out.println("Enter your Zip:");
 						String zip = sc.nextLine();
-						addressBook.setZip(zip);
-
+						contact.get(i).setZip(zip);
+						break;
 					case 7:
-						System.out.println("Enter your new PhoneNumber:");
+						System.out.println("Enter your PhoneNumber:");
 						String phoneNumber = sc.nextLine();
-						addressBook.setPhoneNumber(phoneNumber);
-
+						contact.get(i).setPhoneNumber(phoneNumber);
+						break;
 					case 8:
-						System.out.println("Enter your new Email:");
+						System.out.println("Enter your Email:");
 						String email = sc.nextLine();
-						addressBook.setEmail(email);
-
+						contact.get(i).setEmail(email);
+						break;
 					default:
 						check = false;
 					}
 				}
-			}
+			}else
+				System.out.println("Your name is not matched");
 		}
 	}
 
-	public void remove() {
-		System.out.println("Enter name of contact you want to sell");
+	public void deleteContact(ArrayList<ContactStore> contact) {
+		System.out.println("Enter name of contact to delete");
 		String name = sc.nextLine();
-		for (int i = 0; i < contactList.size(); i++) {
-			if (contactList.remove(contactList.get(i)));
+		for (int i = 0; i < contact.size(); i++) {
+			if (contact.get(i).getFirstName().equals(name)) {
+				contact.remove(i);
+			}
 		}
+	}
+	public boolean searchForDuplication(ArrayList<ContactStore> contactStores, ContactStore contact) {
+		boolean check = false;
+		for (ContactStore contactStore : contactStores) {
+			if(contact.getFirstName().equalsIgnoreCase(contactStore.getFirstName()))
+				check = true;
+		}
+		return check;
 	}
 }
