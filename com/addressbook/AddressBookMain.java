@@ -38,6 +38,10 @@ public class AddressBookMain {
 			 dictionary.put(i, arrayList);
 		}
 		System.out.println(dictionary);
+        ContactStore.writeToFile(dictionary);
+        System.out.println("Reading AddressBooks from File");
+        ContactStore.readFromFile();
+        System.out.println();
         ContactStore.search(dictionary);
         System.out.println("AddressBooks after Sorting based on FirstName: ");
         ContactStore.sortByFirstName(dictionary);
