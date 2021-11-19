@@ -3,18 +3,15 @@ package com.addressbook;
 import java.util.*;
 
 public class AddressBookMain {
-	static Dictionary<String, ArrayList<ContactStore>> dictionary = new Hashtable<>();
+	static Hashtable<Integer, ArrayList<ContactStore>> dictionary = new Hashtable<>();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {	
 		System.out.println("Welcome to Address Book Program");
 		System.out.println("Enter number of addressBooks");
 		int addresssBookLimit = sc.nextInt();
 		sc.nextLine();
-		for (int i = 0; i < addresssBookLimit; i++) {
-			System.out.println("Enter Name of Address Book");
-			String name = sc.nextLine();
+		for (int i = 1; i < addresssBookLimit; i++) {
 			ArrayList<ContactStore> arrayList = new ArrayList<ContactStore>();
 			boolean check = true;
 			while (check) {
@@ -38,8 +35,9 @@ public class AddressBookMain {
 					check = false;
 				}
 			}
-			dictionary.put(name, arrayList);
+			 dictionary.put(i, arrayList);
 		}
 		System.out.println(dictionary);
+        ContactStore.search(dictionary);
 	}
 }
